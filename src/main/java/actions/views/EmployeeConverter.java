@@ -14,11 +14,11 @@ import models.Employee;
 public class EmployeeConverter {
 
     /**
-     * viewモデルのインスタンスからDTOモデルのインスタンスを作成する
+     * ViewモデルのインスタンスからDTOモデルのインスタンスを作成する
      * @param ev EmployeeViewのインスタンス
      * @return Employeeのインスタンス
      */
-    public static Employee toModel(Employee ev) {
+    public static Employee toModel(EmployeeView ev) {
 
         return new Employee(
                 ev.getId(),
@@ -26,12 +26,12 @@ public class EmployeeConverter {
                 ev.getName(),
                 ev.getPassword(),
                 ev.getAdminFlag() == null
-                    ? null
-                    : ev.getAdminFlag() == AttributeConst.ROLE_ADMIN.getIntegerValue()
-                            ? JpaConst.ROLE_ADMIN
-                            : JpaConst.ROLE_GENERAL,
+                        ? null
+                        : ev.getAdminFlag() == AttributeConst.ROLE_ADMIN.getIntegerValue()
+                                ? JpaConst.ROLE_ADMIN
+                                : JpaConst.ROLE_GENERAL,
                 ev.getCreatedAt(),
-                ev.getCreatedAt(),
+                ev.getUpdatedAt(),
                 ev.getDeleteFlag() == null
                         ? null
                         : ev.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()
